@@ -1,4 +1,5 @@
 import csv
+from pathlib import Path
 
 from rich.console import Console
 from rich.table import Table
@@ -72,7 +73,8 @@ def print_detail_table(console: Console, results: list[dict]):
     console.print(detail)
 
 
-def save_csv(results: list[dict], path: str = "results.csv"):
+def save_csv(results: list[dict], path: str = "results/results.csv"):
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
             "review_num", "dataset_index", "ground_truth", "jev_sentiment",

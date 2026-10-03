@@ -1,6 +1,7 @@
 import argparse
 import random
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from datasets import load_dataset
 from dotenv import load_dotenv
@@ -45,19 +46,27 @@ def main():
 
     console.print(f"Analyzing {len(reviews)} reviews with Jev...\n")
 
-    results = []
+    results = [None] * len(reviews)
+    completed = 0
     start = time.perf_counter()
 
-    for i, review in enumerate(reviews):
+    def process(idx, review):
         analysis = analyze_review(client, review["text"])
-        results.append({**review, **analysis})
-        console.print(f"  [{i + 1}/{len(reviews)}] {review['ground_truth']:>8} → jev says {analysis['sentiment']:<8} (confidence: {analysis['sentiment_confidence']:.0%})")
+        return idx, {**review, **analysis}
+
+    with ThreadPoolExecutor(max_workers=20) as pool:
+        futures = {pool.submit(process, i, r): i for i, r in enumerate(reviews)}
+        for future in as_completed(futures):
+            idx, result = future.result()
+            results[idx] = result
+            completed += 1
+            console.print(f"  [{completed}/{len(reviews)}] {result['ground_truth']:>8} → jev says {result['sentiment']:<8} (confidence: {result['sentiment_confidence']:.0%})")
 
     elapsed = time.perf_counter() - start
 
     print_summary(console, results, elapsed)
     print_detail_table(console, results)
-    csv_path = save_csv(results)
+    csv_path = save_csv(results, path=f"results/results_{args.sample_size}.csv")
     console.print(f"\n[bold]Results saved to {csv_path}[/bold]\n")
 
 
