@@ -78,7 +78,7 @@ def save_csv(results: list[dict], path: str = "results.csv"):
             "review_num", "dataset_index", "ground_truth", "jev_sentiment",
             "sentiment_confidence", "is_spoiler_prob", "quality_score",
             "input_tokens", "latency_ms", "cost_usd", "strict_correct",
-            "lenient_correct", "review_preview",
+            "lenient_correct", "review_text",
         ])
         writer.writeheader()
         for i, r in enumerate(results):
@@ -95,6 +95,6 @@ def save_csv(results: list[dict], path: str = "results.csv"):
                 "cost_usd": f"{r['cost_usd']:.8f}",
                 "strict_correct": r["sentiment"] == r["ground_truth"],
                 "lenient_correct": _is_lenient_match(r["sentiment"], r["ground_truth"]),
-                "review_preview": r["text"][:120].replace("\n", " "),
+                "review_text": r["text"],
             })
     return path

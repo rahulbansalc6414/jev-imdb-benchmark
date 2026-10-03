@@ -20,7 +20,9 @@ Jev analyzed 50 randomly sampled reviews from Stanford's [IMDB dataset](https://
 
 IMDB labels are binary (positive/negative), but real reviews are often nuanced. Jev returned "mixed" for 5 reviews — ones that contained both praise and criticism. The actual wrong-polarity errors (positive ↔ negative) were only 3 out of 50.
 
-Full per-review breakdown with latency, cost, confidence, spoiler detection, and quality scores is saved to `results.csv` after each run.
+Full per-review breakdown with latency, cost, confidence, spoiler detection, quality scores, and the complete review text is saved to `results.csv` after each run.
+
+![Sample output](screenshot.png)
 
 ## How it works
 
@@ -67,6 +69,7 @@ Get an API key at [console.typesafe.ai](https://console.typesafe.ai).
 main.py            # Entrypoint — loads IMDB data, runs the loop
 jev_analyzer.py    # Jev client + analyze_review()
 display.py         # Rich terminal output + CSV export
+test_display.py    # Tests for scoring logic and CSV output
 ```
 
 ## Cost

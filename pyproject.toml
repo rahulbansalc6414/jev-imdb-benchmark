@@ -10,3 +10,8 @@ dependencies = [
     "rich>=15.0.0",
     "typesafe-sdk>=0.7.2",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
