@@ -33,7 +33,7 @@ Jev knows when it doesn't know: correct predictions averaged **0.93** confidence
 
 Full per-review breakdown with latency, cost, confidence, spoiler detection, quality scores, and the complete review text is saved to `results/` after each run.
 
-![Sample output](screenshot.png)
+![Sample output](results/screenshot.png)
 
 ## How it works
 
