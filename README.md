@@ -6,21 +6,32 @@
 
 ## Results
 
-Jev analyzed 50 randomly sampled reviews from Stanford's [IMDB dataset](https://huggingface.co/datasets/stanfordnlp/imdb) (25K labeled reviews). Here's what happened:
+Jev analyzed **5,000** randomly sampled reviews from Stanford's [IMDB dataset](https://huggingface.co/datasets/stanfordnlp/imdb) (25K labeled reviews), balanced 50/50 positive/negative. Here's what happened:
 
 | Metric | Value |
 |---|---|
-| Strict accuracy (exact match) | **84%** (42/50) |
-| Lenient accuracy (mixed = ok) | **94%** (47/50) |
-| Avg latency per call | **361ms** |
-| Total input tokens | 32,782 |
-| Total cost | **$0.001377** |
+| Strict accuracy (exact match) | **87.0%** (4,349/5,000) |
+| Lenient accuracy (mixed = ok) | **98.5%** (4,927/5,000) |
+| Mixed predictions | 578 (11.6%) |
+| Avg latency per call | **330ms** |
+| P99 latency | 506ms |
+| Total input tokens | 3,351,350 |
+| Total cost | **$0.14** |
 
 ### Why two accuracy numbers?
 
-IMDB labels are binary (positive/negative), but real reviews are often nuanced. Jev returned "mixed" for 5 reviews — ones that contained both praise and criticism. The actual wrong-polarity errors (positive ↔ negative) were only 3 out of 50.
+IMDB labels are binary (positive/negative), but real reviews are often nuanced. Jev returned "mixed" for 578 reviews — ones that contained both praise and criticism. The actual wrong-polarity errors (positive ↔ negative) were only **73 out of 5,000** (1.5%).
 
-Full per-review breakdown with latency, cost, confidence, spoiler detection, quality scores, and the complete review text is saved to `results.csv` after each run.
+### Confidence calibration
+
+Jev knows when it doesn't know: correct predictions averaged **0.93** confidence, while wrong predictions averaged **0.63**.
+
+| Class | Accuracy |
+|---|---|
+| Positive reviews | 87.0% (2,176/2,500) |
+| Negative reviews | 86.9% (2,173/2,500) |
+
+Full per-review breakdown with latency, cost, confidence, spoiler detection, quality scores, and the complete review text is saved to `results/` after each run.
 
 ![Sample output](screenshot.png)
 
@@ -56,7 +67,7 @@ cp .env.example .env
 uv run python main.py
 
 # Or specify a sample size
-uv run python main.py -n 50
+uv run python main.py -n 5000
 ```
 
 Get an API key at [console.typesafe.ai](https://console.typesafe.ai).
@@ -66,12 +77,13 @@ Get an API key at [console.typesafe.ai](https://console.typesafe.ai).
 ## Project structure
 
 ```
-main.py            # Entrypoint — loads IMDB data, runs the loop
+main.py            # Entrypoint — loads IMDB data, runs concurrent loop
 jev_analyzer.py    # Jev client + analyze_review()
 display.py         # Rich terminal output + CSV export
 test_display.py    # Tests for scoring logic and CSV output
+results/           # CSV results and logs from runs
 ```
 
 ## Cost
 
-Jev charges **$0.042 per million input tokens** with free output. A 20-review run costs ~$0.0006, a 50-review run costs ~$0.0014 — both well under a penny.
+Jev charges **$0.042 per million input tokens** with free output. A 5,000-review run costs ~$0.14. Requests run concurrently (20 workers), so 5,000 reviews finish in about 90 seconds.
