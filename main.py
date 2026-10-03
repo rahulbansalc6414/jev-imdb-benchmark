@@ -1,3 +1,4 @@
+import argparse
 import random
 import time
 
@@ -10,18 +11,20 @@ from jev_analyzer import analyze_review, create_client
 
 load_dotenv()
 
-SAMPLE_SIZE = 20
+DEFAULT_SAMPLE_SIZE = 20
 RANDOM_SEED = 42
 
 
-def load_reviews() -> list[dict]:
+def load_reviews(sample_size: int) -> list[dict]:
     ds = load_dataset("stanfordnlp/imdb", split="test")
-    positive = [r for r in ds if r["label"] == 1]
-    negative = [r for r in ds if r["label"] == 0]
+    indexed = [{"text": r["text"], "label": r["label"], "dataset_index": i} for i, r in enumerate(ds)]
+    positive = [r for r in indexed if r["label"] == 1]
+    negative = [r for r in indexed if r["label"] == 0]
     rng = random.Random(RANDOM_SEED)
     rng.shuffle(positive)
     rng.shuffle(negative)
-    reviews = positive[:SAMPLE_SIZE // 2] + negative[:SAMPLE_SIZE // 2]
+    half = sample_size // 2
+    reviews = positive[:half] + negative[:half]
     rng.shuffle(reviews)
     for r in reviews:
         r["ground_truth"] = "positive" if r["label"] == 1 else "negative"
@@ -29,11 +32,16 @@ def load_reviews() -> list[dict]:
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Benchmark Jev on IMDB reviews")
+    parser.add_argument("-n", "--sample-size", type=int, default=DEFAULT_SAMPLE_SIZE,
+                        help=f"Number of reviews to analyze (default: {DEFAULT_SAMPLE_SIZE})")
+    args = parser.parse_args()
+
     console = Console()
     client = create_client()
 
     console.print("\n[bold]Loading IMDB reviews from Hugging Face...[/bold]")
-    reviews = load_reviews()
+    reviews = load_reviews(args.sample_size)
 
     console.print(f"Analyzing {len(reviews)} reviews with Jev...\n")
 

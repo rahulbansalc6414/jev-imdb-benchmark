@@ -2,23 +2,23 @@
 
 > Can a non-LLM model understand movie reviews? Let's find out.
 
-[Jev](https://typesafe.ai) is TypeSafe AI's **System One** model. It doesn't generate text — it classifies, routes, and scores, returning typed answers with calibrated probabilities in a single pass. This project benchmarks it against 20 real IMDB reviews with known labels.
+[Jev](https://typesafe.ai) is TypeSafe AI's **System One** model. It doesn't generate text — it classifies, routes, and scores, returning typed answers with calibrated probabilities in a single pass. This project benchmarks it against real IMDB reviews with known labels.
 
 ## Results
 
-Jev analyzed 20 randomly sampled reviews from Stanford's [IMDB dataset](https://huggingface.co/datasets/stanfordnlp/imdb) (25K labeled reviews). Here's what happened:
+Jev analyzed 50 randomly sampled reviews from Stanford's [IMDB dataset](https://huggingface.co/datasets/stanfordnlp/imdb) (25K labeled reviews). Here's what happened:
 
 | Metric | Value |
 |---|---|
-| Strict accuracy (exact match) | **85%** (17/20) |
-| Lenient accuracy (mixed = ok) | **90%** (18/20) |
-| Avg latency per call | **368ms** |
-| Total input tokens | 13,474 |
-| Total cost | **$0.000566** |
+| Strict accuracy (exact match) | **84%** (42/50) |
+| Lenient accuracy (mixed = ok) | **94%** (47/50) |
+| Avg latency per call | **361ms** |
+| Total input tokens | 32,782 |
+| Total cost | **$0.001377** |
 
 ### Why two accuracy numbers?
 
-IMDB labels are binary (positive/negative), but real reviews are often nuanced. Jev returned "mixed" for 1 review — one that contained both praise and criticism. The only true misclassifications were 2 reviews where Jev picked the opposite sentiment.
+IMDB labels are binary (positive/negative), but real reviews are often nuanced. Jev returned "mixed" for 5 reviews — ones that contained both praise and criticism. The actual wrong-polarity errors (positive ↔ negative) were only 3 out of 50.
 
 Full per-review breakdown with latency, cost, confidence, spoiler detection, and quality scores is saved to `results.csv` after each run.
 
@@ -50,8 +50,11 @@ cd jev-imdb-benchmark
 cp .env.example .env
 # Edit .env → TYPESAFE_API_KEY=your-key-here
 
-# Run
+# Run (default: 20 reviews)
 uv run python main.py
+
+# Or specify a sample size
+uv run python main.py -n 50
 ```
 
 Get an API key at [console.typesafe.ai](https://console.typesafe.ai).
@@ -68,4 +71,4 @@ display.py         # Rich terminal output + CSV export
 
 ## Cost
 
-Jev charges **$0.042 per million input tokens** with free output. A full 20-review run uses ~14K tokens and costs under **$0.001** — less than a tenth of a cent.
+Jev charges **$0.042 per million input tokens** with free output. A 20-review run costs ~$0.0006, a 50-review run costs ~$0.0014 — both well under a penny.

@@ -1,0 +1,51 @@
+review_num,dataset_index,ground_truth,jev_sentiment,sentiment_confidence,is_spoiler_prob,quality_score,input_tokens,latency_ms,cost_usd,strict_correct,lenient_correct,review_preview
+1,15040,positive,positive,1.0000,0.0600,0.98,524,422.4,0.00002201,True,True,I have to agree with the previous author's comments about the excellent performances and plot. Started watching this mov
+2,12014,negative,negative,1.0000,0.4400,1.87,720,327.6,0.00003024,True,True,Started watching this but didn't believe in any of the characters. In particular the relationship between the bakery ass
+3,15931,positive,positive,1.0000,0.1900,1.95,767,327.2,0.00003221,True,True,"Alice enters in a world of wonder... but not the kind of wonder that you remember as a kid. The Mad Hatter, the White Ra"
+4,16773,positive,mixed,0.9700,0.1200,1.92,751,312.5,0.00003154,False,True,"This is a well directed Columbo episode, with also some good character but the story just doesn't really know to interes"
+5,11952,negative,negative,1.0000,0.1900,1.87,555,388.6,0.00002331,True,True,"Not too good a movie. Sure, it contains action, but the effects aren't all that good for a '08 movie. Gunshot effects ar"
+6,4325,negative,negative,0.9700,0.5300,1.81,854,337.9,0.00003587,True,True,"Some people like to tell you that Deep Space 9 is the best of all the Star Trek shows, because it stresses character dev"
+7,10150,negative,positive,1.0000,0.0700,0.69,558,328.6,0.00002344,False,False,"This movie changed my life! Hogan's performance was nothing short of incredible, and I still haven't recovered from his "
+8,2030,negative,negative,0.9200,0.4400,2.00,700,419.9,0.00002940,True,True,"Reading the other user comments, the review by A666333 has articulated most of what I was feeling throughout this film- "
+9,23535,positive,positive,0.9900,0.0700,1.19,647,405.6,0.00002717,True,True,I truly fell in love with the characters. They were very down to earth but each and every one of them had a hidden dark 
+10,5159,negative,negative,1.0000,0.9500,1.19,579,368.8,0.00002432,True,True,"Nico Mastorakis's banned movie was quite disappointing in my opinion. The movie is about a couple, who go to a Greek isl"
+11,1563,negative,mixed,0.8000,0.0800,1.82,791,337.8,0.00003322,False,True,There are plenty of reviews that describe this movie as the worst ever made. For sure there are plenty of mistakes: lack
+12,3305,negative,negative,1.0000,0.0500,1.94,746,328.2,0.00003133,True,True,"A great gangster flick, with brilliant performances by well-known actors with great action scenes? Well, not this one.<b"
+13,12709,positive,positive,1.0000,0.5800,1.97,856,313.7,0.00003595,True,True,I can't believe I rarely ever see this title mentioned by all you eighties horror freaks and I definitely won't be joini
+14,17124,positive,positive,1.0000,0.7900,1.97,871,386.5,0.00003658,True,True,"""Beyond Rangoon"" is simply marvelous. From the traumatic opening to the uplifting ending, you will be amazed at how well"
+15,22762,positive,mixed,0.9300,0.7400,1.98,653,372.8,0.00002743,False,True,Nynke is a classy filmed movie in the same style as the Oscar winning film Character (1997). But this comparison immedia
+16,11679,negative,negative,1.0000,0.0500,0.94,511,405.9,0.00002146,True,True,"Not only Why? But ""What were they thinking?"" This must have been some<br /><br />sort of payback to Gus Van Sant, becaus"
+17,2647,negative,negative,1.0000,0.0300,1.47,632,383.6,0.00002654,True,True,"Words cannot describe how asinine, juvenile,and repetitive this steaming pile of a series is. It relies on 3 things: 1. "
+18,21908,positive,positive,1.0000,0.9600,1.07,602,431.4,0.00002528,True,True,"I thought this movie was excellent. Jon Foster is one of my top favorite actors, he was perfect as Micheal Skakel. I fou"
+19,20180,positive,positive,1.0000,0.0400,1.44,607,350.0,0.00002549,True,True,"It's simply ridiculous how underrated this movie is. It is one of the funniest movies I have ever seen. It never lags, i"
+20,14866,positive,positive,1.0000,0.0600,1.48,589,313.9,0.00002474,True,True,I taped this on Sundance and had no idea that it was a Miike film. I thought it was just another kung fu movie.<br /><br
+21,20938,positive,positive,1.0000,0.0400,1.09,539,459.3,0.00002264,True,True,Walking With Dinoasaurs is a new and exciting programme that uses amazing visual graphics to display the living dinosaur
+22,12967,positive,positive,0.9900,0.1000,1.36,693,312.1,0.00002911,True,True,"""Hey, I didn't order no cab!"" ""Yeah, well you got one..."" What can I say about Hack...what a man among men. He was a hea"
+23,18674,positive,positive,1.0000,0.0600,1.82,724,326.8,0.00003041,True,True,This is one of my favorite horror films of all time and I used to think it never really got its due. That is until I rea
+24,15297,positive,mixed,0.6600,0.0800,1.85,625,353.9,0.00002625,False,True,"Being an avid Carpenter Fan, I really loved this film (although the wigs do leave a lot to be desired!) and agree with m"
+25,6391,negative,negative,1.0000,0.2200,1.95,645,383.9,0.00002709,True,True,"While it has been many decades since I last read Mr. Wells ""War of the Worlds"", or ""The Time Machine"", or any other of h"
+26,4358,negative,negative,0.9700,0.9300,1.81,843,370.6,0.00003541,True,True,Hollywood will stop at nothing to make money on a film even if they have to keep dragging out stereotypes and putting th
+27,21762,positive,positive,1.0000,0.0300,1.14,576,396.9,0.00002419,True,True,The chaser's war on everything is a weekly show from the guys that brought you CNNNN and the chaser decides where each w
+28,19841,positive,positive,0.8700,0.5800,1.42,779,339.6,0.00003272,True,True,"While driving in a dangerous zigzag manner on a lonely road in the night, the teenager Cliff (Jay R. Ferguson) has a car"
+29,15591,positive,positive,1.0000,0.2100,1.59,568,327.4,0.00002386,True,True,I remember coming home from school to watch up and coming this was the story of a black family that moves out of the ghe
+30,7765,negative,negative,1.0000,0.0800,1.44,588,354.9,0.00002470,True,True,"This is one of the most awful movies I've had the misfortune of picking up. Don't get me wrong, I love a good zombie fli"
+31,6802,negative,negative,0.8700,0.0600,0.62,486,337.7,0.00002041,True,True,this is a below average martial arts films which is worth watching for the comedy value due to the part where a pair of 
+32,1838,negative,negative,0.8800,0.2200,1.99,824,333.7,0.00003461,True,True,This is not a good film by an standards. It is very poorly written and the acting is just a little above par (some perfo
+33,8853,negative,negative,0.5800,0.1600,1.42,588,449.4,0.00002470,True,True,"""Music and lyrics written and performed by Charlie Daniels""... 'nuff said. Just don't be expecting anything along the li"
+34,2779,negative,negative,1.0000,0.0500,1.78,582,338.5,0.00002444,True,True,"Am I the only one to notice that the ""realism"" of the 19th century ship is erroneous. Actually it's a 15th century, righ"
+35,9363,negative,negative,1.0000,0.0500,0.91,502,376.6,0.00002108,True,True,"A really terrible movie, really low-budget, with terrible acting, a convoluted and inane plot, a modest reworking of the"
+36,8024,negative,negative,1.0000,0.0300,0.65,504,306.6,0.00002117,True,True,Please give this one a miss.<br /><br />Kristy Swanson and the rest of the cast rendered terrible performances. The show
+37,12379,negative,negative,1.0000,0.0400,1.92,600,328.8,0.00002520,True,True,"This movie was physically painful to sit through, maybe because (like many people my age, and younger) I grew up with Dr"
+38,4910,negative,negative,1.0000,0.0500,0.80,493,325.4,0.00002071,True,True,I'm watching this film as I write this. It's about 45 minutes into the film and there's been so much back and forth and 
+39,24574,positive,positive,1.0000,0.8500,1.99,921,364.6,0.00003868,True,True,"This is an excellent anime movie. It is well animated, has a good intricate plot and very good music. I understand that "
+40,10315,negative,negative,1.0000,0.2000,0.68,855,408.1,0.00003591,True,True,"Significant Spoilers! <br /><br />This is a sick, disturbing movie... just like the sick, twisted director, Jennifer Cha"
+41,19337,positive,positive,1.0000,0.4100,1.80,883,476.9,0.00003709,True,True,"This is a great German slasher, that's often quite suspenseful, and creative, with a fun story and solid performances. A"
+42,22346,positive,positive,0.9900,0.1600,1.89,701,369.2,0.00002944,True,True,"I loved ""Flash Gordon"" as a child and watching the series again on DVD brings back such fond memories. Each 15-minute ep"
+43,5368,negative,positive,0.6000,0.0600,0.18,455,323.2,0.00001911,False,False,im sure he doesnt need the money for a life saving operation or transplant. in all honesty i think this review qualifies
+44,5743,negative,negative,1.0000,0.1400,1.94,583,366.5,0.00002449,True,True,Words fail me for this appalling waste of two hours of anyone's life. The story is contrived to the point of complete in
+45,20411,positive,positive,0.9700,0.1600,1.20,586,324.3,0.00002461,True,True,"OK firstly, if your not a fan of the whole low budget horror genre then don't bother with this. You really need to be a "
+46,22428,positive,positive,0.9900,0.2300,1.98,842,325.8,0.00003536,True,True,"This may not be the most exiting or incredible episode they've made, but in my opinion it remains as one of Star Trek an"
+47,16229,positive,positive,1.0000,0.0300,1.03,587,372.5,0.00002465,True,True,"Ah the Outer Limits. I love that show. It was surpremely creepy, or down-right mysterious. I loved all the genres of the"
+48,22469,positive,negative,0.9900,0.0500,1.68,578,329.7,0.00002428,False,False,"...dislike this movie and everyone would understand why. The plot is poor, so is the acting. But in my opinion it is bet"
+49,953,negative,negative,0.7100,0.2100,1.97,565,362.6,0.00002373,True,True,This 3-hour made-for-TV miniseries came home with us from Blockbuster's this weekend. The production company clearly spe
+50,19410,positive,mixed,0.9900,0.2700,1.43,554,318.5,0.00002327,False,True,A teen-aged girl gets the horse of her dreams and is trained by an ex-Jockey to participate in London's Grand National S

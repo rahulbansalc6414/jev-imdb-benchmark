@@ -42,6 +42,7 @@ def print_summary(console: Console, results: list[dict], elapsed: float):
 def print_detail_table(console: Console, results: list[dict]):
     detail = Table(title="Per-Review Breakdown")
     detail.add_column("#", justify="right")
+    detail.add_column("IMDB ID", justify="right")
     detail.add_column("Ground Truth")
     detail.add_column("Jev Sentiment")
     detail.add_column("Confidence", justify="right")
@@ -54,9 +55,10 @@ def print_detail_table(console: Console, results: list[dict]):
     for i, r in enumerate(results):
         match_icon = "[green]✓[/green]" if r["sentiment"] == r["ground_truth"] else "[red]✗[/red]"
         spoiler = "[yellow]yes[/yellow]" if r["is_spoiler"] > 0.5 else "no"
-        preview = r["text"][:60].replace("\n", " ") + "..."
+        preview = r["text"][:40].replace("\n", " ") + "..."
         detail.add_row(
             f"{i + 1}",
+            str(r["dataset_index"]),
             r["ground_truth"],
             f"{match_icon} {r['sentiment']}",
             f"{r['sentiment_confidence']:.0%}",
@@ -73,14 +75,16 @@ def print_detail_table(console: Console, results: list[dict]):
 def save_csv(results: list[dict], path: str = "results.csv"):
     with open(path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
-            "review_num", "ground_truth", "jev_sentiment", "sentiment_confidence",
-            "is_spoiler_prob", "quality_score", "input_tokens", "latency_ms",
-            "cost_usd", "strict_correct", "lenient_correct", "review_preview",
+            "review_num", "dataset_index", "ground_truth", "jev_sentiment",
+            "sentiment_confidence", "is_spoiler_prob", "quality_score",
+            "input_tokens", "latency_ms", "cost_usd", "strict_correct",
+            "lenient_correct", "review_preview",
         ])
         writer.writeheader()
         for i, r in enumerate(results):
             writer.writerow({
                 "review_num": i + 1,
+                "dataset_index": r["dataset_index"],
                 "ground_truth": r["ground_truth"],
                 "jev_sentiment": r["sentiment"],
                 "sentiment_confidence": f"{r['sentiment_confidence']:.4f}",
